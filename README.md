@@ -1,31 +1,32 @@
 # Sistema de Controle de Permissoes e Acessos
 
-Este arquivo foi criado para registrar, de forma direta, como executar o trabalho com Maven e sem Maven.
-
 ## Requisitos
-- Java 17 ou superior
-- Maven 3.9 ou superior, apenas se for usar a execucao com Maven
 
-## Execucao direta no VS Code
-Se o projeto estiver aberto no VS Code com a extensao Java instalada, tambem e possivel abrir o arquivo `Main.java` e clicar em `Run` acima do metodo `main`.
-Essa forma usa a configuracao do editor para executar a classe principal sem precisar digitar comandos.
+- Java 17 ou superior
+- Maven 3.9 ou superior (opcional — apenas para execucao via Maven)
+
+## Execucao no VS Code
+
+Abra o projeto no VS Code com a extensao **Extension Pack for Java** instalada.  
+Navegue ate o arquivo `src/main/java/br/edu/poo/permissoes/app/Main.java` e clique em **Run** acima do metodo `main`.
 
 ## Execucao com Maven
-No diretorio raiz do projeto:
 
-```powershell
-mvn -q clean compile
-mvn -q exec:java
+No diretorio raiz do projeto (onde esta o `pom.xml`), execute:
+
+```bash
+mvn clean compile exec:java
 ```
 
-## Execucao sem Maven
-No diretorio raiz do projeto:
+Ou em dois passos:
 
-```powershell
-$files = Get-ChildItem -Recurse -Filter *.java src/main/java | ForEach-Object { $_.FullName }
-javac --release 17 -d out $files
-java -cp out br.edu.poo.permissoes.app.Main
+```bash
+mvn clean compile
+mvn exec:java
 ```
 
 ## Observacao
-A execucao no console demonstra os cenarios obrigatorios do enunciado, incluindo cadastro, associacao, bloqueio, desbloqueio, verificacao de acesso e auditoria em memoria.
+
+A execucao no console demonstra todos os cenarios obrigatorios do enunciado:
+cadastro, associacao de papeis e permissoes, bloqueio, desbloqueio,
+verificacao de acesso por cadeia de regras e auditoria em memoria.
